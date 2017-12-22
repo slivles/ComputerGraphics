@@ -62,6 +62,7 @@ var wood;
 var spotLihgt;
 var lamp, chair;
 var floor;
+var botton,button2;
 init();
 animate();
 function chairBuild(){
@@ -86,14 +87,10 @@ mtlLoader.load('efit 10.mtl', function(materials) {
 
     var theObject =  unitize (object, 130);
     scene.add (theObject);
-	theObject.castShadow = true;
-	theObject.receiveShadow = true;
 	object.rotation.x = -(Math.PI / 2);
 	object.position.set(-145,0,-145);
-    //scene.add (new THREE.BoxHelper (theObject));
- // }, onProgress, onError);
-  
-  
+ //   scene.add (new THREE.BoxHelper (theObject));
+  }, onProgress, onError);
 
 });
 }
@@ -122,9 +119,9 @@ mtlLoader.load('Desk lamp.mtl', function(materials) {
     scene.add (theObject);
 	theObject.position.set(-60,105,25);
 	theObject.rotation.y = Math.PI / 6;
-	heObject.castShadow = true;
+	theObject.castShadow = true;
 	theObject.receiveShadow = true;
-    scene.add (new THREE.BoxHelper (theObject));
+   // scene.add (new THREE.BoxHelper (theObject));
   }, onProgress, onError);
 
 });
@@ -233,7 +230,7 @@ function init() {
   controls = new THREE.OrbitControls(camera, renderer.domElement);
   scene = new THREE.Scene();
   let gridXZ = new THREE.GridHelper(200, 10, 'red', 'white');
-  scene.add(gridXZ);
+  //scene.add(gridXZ);
   //table 
   scene.add(buildTable());
   //bottom
@@ -282,6 +279,7 @@ function init() {
   tableLeg.receiveShadow = true;
 }
 function animate() {
+	
     controls.update();
     renderer.render (scene, camera);
     requestAnimationFrame (animate);
